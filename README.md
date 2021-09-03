@@ -10,6 +10,7 @@ npm run start
 ```
 
 ##Shop Stocktaking
+
 Create a function that receives the array of goods and returns the cost that should be paid for all these goods.
 Your code should:
 - Validate the data according to the following rules: item: string,  type: string, weight: number, quantity: number, pricePerKilo: `“$” + number` - string,  pricePerItem: `“$” + number` - string
