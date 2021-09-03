@@ -1,5 +1,6 @@
 const getGoodPrice = str => +str.replace(/\$/, '').replace(',', '.');
-const itemField = item => item.pricePerKilo !== undefined ? getGoodPrice(item.pricePerKilo) : getGoodPrice(item.pricePerItem);
+const itemPricePerField = item => item.pricePerKilo !== undefined ? getGoodPrice(item.pricePerKilo) : getGoodPrice(item.pricePerItem);
+const itemQuant = item => item.quantity ? item.quantity : item.weight;
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 const filterAndReduce = (goods, itemName, itemField) => {
@@ -10,7 +11,7 @@ const filterAndReduce = (goods, itemName, itemField) => {
 
 const alphabeticalSort = data => data.sort((a, b) => a.item.localeCompare(b.item));
 
-const costSort = data => data.sort((a, b) => itemField(a) - itemField(b));
+const costSort = data => data.sort((a, b) => itemPricePerField(a) - itemPricePerField(b));
 
 const orangesWithLeastPrice = data => {
   const orangeItem = data
@@ -28,7 +29,7 @@ const goodsCost = data => {
   for (let good of uniqueItems) {
     const totalGoodPrice = data
         .filter(goodItem => goodItem.item === good)
-        .reduce((acc, curr) => acc + itemField(curr) * 100, 0);
+        .reduce((acc, curr) => acc + (itemPricePerField(curr) * 100) * itemQuant(curr), 0);
 
     resultStr += `${ capitalize(good) }s - ${ totalGoodPrice / 100 }, `
   }
