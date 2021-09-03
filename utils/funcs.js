@@ -1,7 +1,8 @@
 const getGoodPrice = str => +str.replace(/\$/, '').replace(',', '.');
-const itemPricePerField = item => item.pricePerKilo !== undefined ? getGoodPrice(item.pricePerKilo) : getGoodPrice(item.pricePerItem);
-const itemQuant = item => item.quantity ? item.quantity : item.weight;
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+const itemQuant = item => item.quantity !== undefined ? item.quantity : item.weight;
+const itemPricePerField = item => item.pricePerKilo !== undefined ? getGoodPrice(item.pricePerKilo) : getGoodPrice(item.pricePerItem);
+
 
 const filterAndReduce = (goods, itemName, itemField) => {
   return goods
@@ -34,7 +35,7 @@ const goodsCost = data => {
     resultStr += `${ capitalize(good) }s - ${ totalGoodPrice / 100 }, `
   }
 
-  return resultStr;
+  return resultStr.substring(0, resultStr.length - 2);
 };
 
 
