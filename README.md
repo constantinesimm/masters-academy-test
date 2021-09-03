@@ -9,7 +9,7 @@ npm install
 npm run start
 ```
 
-##Shop Stocktaking
+## Shop Stocktaking
 
 Create a function that receives the array of goods and returns the cost that should be paid for all these goods.
 Your code should:
