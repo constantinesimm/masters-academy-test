@@ -1,0 +1,16 @@
+{
+  "name": "master-academy-test",
+  "version": "1.0.0",
+  "description": "Test for Master Academy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kostiantyn Peschanov (constantine.peschanov@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "jsonschema": "^1.4.0"
+  }
+}
